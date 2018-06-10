@@ -15,10 +15,15 @@ public class CarCatalogViewModel extends AndroidViewModel {
     public CarCatalogViewModel(@NonNull Application application) {
         super(application);
 
-        carCatalogRepository = new CarCatalogRepositoryRetrofitImpl();
+        carCatalogRepository = new CarCatalogRepositoryRetrofitImpl(application.getApplicationContext());
     }
 
     public LiveData<PagedList<CarAd>> getCarCatalog(){
         return carCatalogRepository.getCarCatalog();
     }
+
+    public CarCatalogDataFactory getDataFactory(){
+        return carCatalogRepository.getCarCatalogDataFactory();
+    }
+
 }

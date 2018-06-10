@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_100"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vpImages"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="4:3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/leftGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/margin_regular" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/midGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/rightGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/margin_regular" />
+
+            <TextView
+                android:id="@+id/tvCarName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/empty_label"
+                android:textColor="@color/md_grey_900"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCarPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/empty_label"
+                android:textColor="@color/md_deep_orange_400"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvCarName" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/md_grey_500"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvCarPrice" />
+
+            <TextView
+                android:id="@+id/tvDetailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/details_label"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+            <TextView
+                android:id="@+id/tvBuildYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/build_year"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailsLabel" />
+
+            <TextView
+                android:id="@+id/tvEngine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/engine"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvBuildYear" />
+
+            <TextView
+                android:id="@+id/tvPriceCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/price_condition"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvEngine" />
+
+            <TextView
+                android:id="@+id/tvColorFamily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/color_family"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvPriceCondition" />
+
+            <TextView
+                android:id="@+id/tvDoors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/doors"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvColorFamily" />
+
+            <TextView
+                android:id="@+id/tvDriveType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/drive_type"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvDoors" />
+
+            <TextView
+                android:id="@+id/tvWarrantyType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/warranty_type"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvDriveType" />
+
+            <TextView
+                android:id="@+id/tvBuildYearValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/build_year"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvBuildYear"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvEngineValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/engine"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvEngine"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvPriceConditionValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/price_condition"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvPriceCondition"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvColorFamilyValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/color_family"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvColorFamily"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvDoorsValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/doors"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvDoors"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvDriveTypeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/drive_type"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvDriveType"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <TextView
+                android:id="@+id/tvWarrantyTypeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/warranty_type"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvWarrantyType"
+                app:layout_constraintStart_toStartOf="@id/midGuideline" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/md_grey_500"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvWarrantyType" />
+
+            <TextView
+                android:id="@+id/tvProductionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/description_label"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+            <TextView
+                android:id="@+id/tvDescriptionValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_padding_medium"
+                android:text="@string/empty_label"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/tvProductionLabel" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

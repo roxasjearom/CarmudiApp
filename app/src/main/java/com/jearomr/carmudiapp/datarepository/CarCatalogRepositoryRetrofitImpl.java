@@ -1,32 +1,39 @@
 package com.jearomr.carmudiapp.datarepository;
 
+import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
 import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
+import android.content.Context;
 
 import com.jearomr.carmudiapp.models.CarAd;
 
+import static android.arch.lifecycle.Transformations.switchMap;
+
 public class CarCatalogRepositoryRetrofitImpl implements CarCatalogRepository {
 
-    CarCatalogDataFactory dataFactory;
+    private CarCatalogDataFactory dataFactory;
+    private static final int INITIAL_ITEMS = 50;
     private static final int MAX_ITEMS = 30;
-    private LiveData<PagedList<CarAd>> carAds;
 
-    public CarCatalogRepositoryRetrofitImpl() {
-        dataFactory = new CarCatalogDataFactory();
+    CarCatalogRepositoryRetrofitImpl(Context context) {
+        dataFactory = new CarCatalogDataFactory(context);
     }
 
     @Override
     public LiveData<PagedList<CarAd>> getCarCatalog() {
         PagedList.Config config = new PagedList.Config.Builder()
-                .setInitialLoadSizeHint(MAX_ITEMS)
+                .setInitialLoadSizeHint(INITIAL_ITEMS)
                 .setPageSize(MAX_ITEMS)
                 .build();
 
-        carAds = new LivePagedListBuilder(dataFactory, config)
+        return new LivePagedListBuilder(dataFactory, config)
                 .setInitialLoadKey(1)
                 .build();
+    }
 
-        return carAds;
+    @Override
+    public CarCatalogDataFactory getCarCatalogDataFactory() {
+        return dataFactory;
     }
 }

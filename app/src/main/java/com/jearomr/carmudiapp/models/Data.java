@@ -1,9 +1,12 @@
 package com.jearomr.carmudiapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+public class Data implements Parcelable{
 
     @SerializedName("name")
     @Expose
@@ -20,6 +23,38 @@ public class Data {
     @SerializedName("description")
     @Expose
     private String description;
+
+    @SerializedName("attributes")
+    @Expose
+    private Attributes attributes;
+
+    public Data(String name, double price, String brand, String description, Attributes attributes) {
+        this.name = name;
+        this.price = price;
+        this.brand = brand;
+        this.description = description;
+        this.attributes = attributes;
+    }
+
+    protected Data(Parcel in) {
+        name = in.readString();
+        price = in.readDouble();
+        brand = in.readString();
+        description = in.readString();
+        attributes = in.readParcelable(Attributes.class.getClassLoader());
+    }
+
+    public static final Creator<Data> CREATOR = new Creator<Data>() {
+        @Override
+        public Data createFromParcel(Parcel in) {
+            return new Data(in);
+        }
+
+        @Override
+        public Data[] newArray(int size) {
+            return new Data[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -51,5 +86,27 @@ public class Data {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeDouble(price);
+        parcel.writeString(brand);
+        parcel.writeString(description);
+        parcel.writeParcelable(attributes, i);
     }
 }

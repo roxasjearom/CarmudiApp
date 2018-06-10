@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="card_margin">4dp</dimen>
+
+    <dimen name="text_padding">4dp</dimen>
+    <dimen name="text_padding_medium">8dp</dimen>
+
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_margin_small">8dp</dimen>
+    <dimen name="text_margin_very_small">4dp</dimen>
+    <dimen name="text_margin_super_small">2dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+
+    <dimen name="text_regular">16sp</dimen>
+    <dimen name="text_medium">20sp</dimen>
+    <dimen name="text_large">24sp</dimen>
+    <dimen name="text_extra_large">28sp</dimen>
+    <dimen name="text_emphasis">32sp</dimen>
+
+</resources>

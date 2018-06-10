@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">CarmudiApp</string>
+
+    <string name="details_label">Details</string>
+    <string name="description_label">Description</string>
+
+    <string name="empty_label">-</string>
+
+    <string name="build_year">Build (Year)</string>
+    <string name="engine">Engine</string>
+    <string name="price_condition">Price Condition</string>
+    <string name="color_family">Color Family</string>
+    <string name="doors">Doors</string>
+    <string name="drive_type">Drive Type</string>
+    <string name="warranty_type">Warranty Type</string>
+
+    <string name="unable_to_fetch_data">Unable to fetch data. \nCheck your connection first.</string>
+
 </resources>

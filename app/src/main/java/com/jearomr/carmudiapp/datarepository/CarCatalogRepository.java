@@ -9,4 +9,6 @@ public interface CarCatalogRepository {
 
     LiveData<PagedList<CarAd>> getCarCatalog();
 
+    CarCatalogDataFactory getCarCatalogDataFactory();
+
 }
